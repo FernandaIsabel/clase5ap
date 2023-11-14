@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import './style.css';
 
-function App() {
+function App () {
+  const [colorChanged, setColorChanged] = useState(false);
+
+  function handleButtonClick() {
+    setColorChanged(!colorChanged);
+  }
+
+  const estiloParrafo = {
+    backgroundColor: colorChanged ? 'lightblue': 'white',
+    fontSize: colorChanged ? '30px' : '20px',
+    fontFamily: colorChanged ? 'Arial' : 'Times New Roman',
+    padding: '10px',
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <p style={estiloParrafo}>Este párrafo cambia su estilo.</p>
+      <button onClick={handleButtonClick}>Enviar</button>
     </div>
   );
+
 }
 
 export default App;
